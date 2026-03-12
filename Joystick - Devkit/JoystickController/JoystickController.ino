@@ -6,7 +6,7 @@
 /* ================================
  *           Pin Mapping
  * ================================
- * Shift-register (e.g., 74HC165 chain) to read 32 buttons:
+ * Shift-register (e.g., 74HC165 chain) to read up to 32 buttons:
  *  - PIN_PL : Parallel Load (/PL). Low pulse latches the current button states.
  *  - PIN_CP : Shift Clock. Rising edge shifts the next bit to Q7.
  *  - PIN_Q7 : Serial output from the last register in chain (MSB-first in this code).
@@ -39,7 +39,6 @@ TaskHandle_t FlightTaskHandle;
  * Computes an 8-bit CRC over 'len' bytes in 'data'.
  * - Initial value: 0x00
  * - Polynomial   : 0x31 (MSB-first, left-shift)
- * - No final XOR, no reflection of input/output bits.
  *
  * Important: This is NOT the typical Dallas/Maxim reflected implementation.
  * Ensure your receiver computes the same variant or change this to the ref/LSB-first form.
